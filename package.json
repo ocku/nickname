@@ -1,0 +1,45 @@
+{
+  "name": "nicname",
+  "version": "1.0.0",
+  "description": "A low overhead asynchronous whois client for Node.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "update-hosts": "ts-node scripts/update-hosts.ts && npx prettier src -w",
+    "prepublish": "rm -rf lib && tsc -d -p tsconfig.dist.json",
+    "test": "rm -rf lib && tsc -d && node --test"
+  },
+  "author": {
+    "email": "feeling@lost.st",
+    "name": "félix"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "socks": "^2.8.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.15.0",
+    "@tsconfig/node-lts": "^22.0.1",
+    "@types/node": "^22.10.1",
+    "@typescript-eslint/eslint-plugin": "^8.16.0",
+    "@typescript-eslint/parser": "^8.16.0",
+    "eslint": "^9.15.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.12.0",
+    "prettier": "3.4.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.16.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ocku/nicname.git"
+  },
+  "engines": {
+    "node": ">=22.11.0"
+  }
+}
