@@ -17,8 +17,10 @@ jobs:
       - run: |
           npm ci
           npm run update-hosts
-
-          # if there are any changes between the latest release and our branch
+          
+          git fetch --tags
+          # if there are any changes between the latest release and our branch,
+          # create a new release.
           git diff \
               "$(npm view nicname version)" --quiet \
               -- src package.json package-lock.json ':!*.test.ts' ':!*.fixture.ts' ||
