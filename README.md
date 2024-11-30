@@ -13,10 +13,10 @@ const { nicname } = require('nicname');
 
 ```js
 // Query an ipv4 address
-console.log(await nicname('1.1.1.1')); // ...
+console.log(await nicname('127.0.0.1')); // ...
 
 // Query an ipv6 address
-console.log(await nicname('2606:4700:4700::1001')); // ...
+console.log(await nicname('::1')); // ...
 
 // Query a domain
 console.log(await nicname('lost.st')); // ...
@@ -107,7 +107,7 @@ const res = await nicname('lost.st', options);
 console.log(res); // ...
 ```
 
-## Punycode
+### Punycode
 
 Punycode domain lookups are supported, but to keep overhead low, special Unicode characters are not automatically transcoded to LDH.
 
@@ -124,4 +124,10 @@ await nicname('nic.コム'); // goes through IANA, returns "No match"
 
 ## Requirements
 
-This library requires Node LTS to work.
+This library requires Node LTS (>=22.11.0) to work.
+
+## Release schedule
+
+Releases are published on a bimonthly basis, occurring on the 1st and 15th of each month, provided there are updates or changes to include.
+
+In the event of a security issue, a release will be issued immediately, regardless of the regular release schedule.

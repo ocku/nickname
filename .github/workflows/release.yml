@@ -1,0 +1,51 @@
+name: Create release
+
+on:
+  schedule:
+    - cron: '0 0 1,15 * *'
+
+  workflow_dispatch:
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: |
+          npm ci
+          npm run update-hosts
+
+          # if there are any changes between the latest release and our branch
+          git diff \
+              "$(npm view nicname version)" --quiet \
+              -- src package.json package-lock.json ':!*.test.ts' ':!*.fixture.ts' ||
+              {
+
+                  # get the next patch version
+                  # every major/minor release will have a .1 patch
+                  # but it's a less than minor inconvenience ;)
+
+                  tag="$(npm version patch -m "${msg}" --no-git-tag-version)"
+                  tag="${tag#v}" # v0.0.0 -> 0.0.0
+                  msg='Semi-monthly release'
+
+                  git config --global user.email "feeling@lost.st"
+                  git config --global user.name "Robocop"
+
+                  # push to main and create a new tag and release
+
+                  git add .
+                  git commit -m "PATCH: ${msg}"
+
+                  git tag "${tag}"
+
+                  git push origin main
+                  git push origin --tags
+
+                  gh release create "${tag}" --notes "${msg}"
+              }
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

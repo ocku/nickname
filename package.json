@@ -2,6 +2,11 @@
   "name": "nicname",
   "version": "1.0.0",
   "description": "A low overhead asynchronous whois client for Node.js",
+  "keywords": [
+    "whois",
+    "async",
+    "typescript"
+  ],
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [

@@ -11,7 +11,7 @@ describe('whois', () => {
     const mockChooseServer = context.mock.method(protocol, 'chooseServer');
     context.mock.method(lookup, 'lookup', () => '');
 
-    await nicname('1.1.1.1');
+    await nicname('127.0.0.1');
 
     assert(mockChooseServer.mock.callCount() > 0);
   });
@@ -20,7 +20,7 @@ describe('whois', () => {
     context.mock.method(lookup, 'lookup', () => '');
 
     await assert.rejects(() =>
-      nicname('1.1.1.1', {
+      nicname('127.0.0.1', {
         exceededFollowLimitBehavior: 'throw',
         follow: 0
       })
@@ -30,7 +30,7 @@ describe('whois', () => {
   it('should return the last response when the follow limit is exceeded and exceededFollowLimitBehavior="nothrow"', async (context) => {
     context.mock.method(lookup, 'lookup', () => '');
 
-    const res = await nicname('1.1.1.1', {
+    const res = await nicname('127.0.0.1', {
       exceededFollowLimitBehavior: 'nothrow',
       follow: 0
     });

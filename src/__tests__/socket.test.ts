@@ -81,7 +81,7 @@ describe('socket / connect', () => {
       return emitter;
     });
 
-    const res = await socket.connect({ host: '1.1.1.1', port: 80 });
+    const res = await socket.connect({ host: '127.0.0.1', port: 80 });
 
     assert.deepEqual(res, emitter);
   });
