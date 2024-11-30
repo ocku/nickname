@@ -41,6 +41,6 @@ const sleep = (time: number) => new Promise((res) => setTimeout(res, time));
   }
 
   createWriteStream('src/constants/hosts.ts').write(
-    `export default ${JSON.stringify(hosts)} as Record<string, string>`
+    `export const HOSTS = ${JSON.stringify(hosts)} as Record<string, string>`
   );
 })();

@@ -1,6 +1,6 @@
 import type { LookupServer } from './types';
 import { SPECIAL_HOSTS, ARIN_HOST, IANA_HOST } from './constants/servers';
-import hosts from './constants/hosts';
+import { HOSTS } from './constants/hosts';
 import net from 'node:net';
 
 /** discards non-whois servers */
@@ -33,8 +33,8 @@ export const chooseServer = (domain: string): LookupServer => {
   }
 
   const tld = domainChunks[domainChunks.length - 1];
-  if (tld in hosts) {
-    const host = hosts[tld];
+  if (tld in HOSTS) {
+    const host = HOSTS[tld];
     return host in SPECIAL_HOSTS
       ? {
           ...SPECIAL_HOSTS[host],

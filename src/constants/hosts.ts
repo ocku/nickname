@@ -1,4 +1,4 @@
-export default {
+export const HOSTS = {
   aarp: 'whois.nic.aarp',
   abb: 'whois.nic.abb',
   abbott: 'whois.nic.abbott',

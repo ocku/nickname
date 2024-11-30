@@ -1,12 +1,11 @@
 import type { LookupOptions } from './types';
-import hosts from './constants/hosts';
 import { MAX_FOLLOW } from './constants/defaults';
 import { REFERRAL_PATTERN } from './constants/patterns';
 import { SPECIAL_HOSTS } from './constants/servers';
 import { chooseServer, isValidRef } from './protocol';
 import { lookup } from './lookup';
 
-export const HOSTS = hosts;
+export { HOSTS } from './constants/hosts';
 
 export const nicname = async (
   domain: string,
