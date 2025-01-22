@@ -1,6 +1,6 @@
 {
   "name": "nicname",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A low overhead asynchronous whois client for Node.js",
   "keywords": [
     "whois",
