@@ -297,7 +297,6 @@ export const HOSTS = {
   edeka: 'whois.nic.edeka',
   edu: 'whois.educause.edu',
   education: 'whois.nic.education',
-  ee: 'whois.tld.ee',
   email: 'whois.nic.email',
   emerck: 'whois.nic.emerck',
   energy: 'whois.nic.energy',
